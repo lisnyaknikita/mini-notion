@@ -1,2 +1,25 @@
 @import './reset.css';
 @import './variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: $text;
+  background-color: $primary;
+}
+button {
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+}
+
+.wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.inner {
+  // width: 100vh;
+  // height: 100vh;
+  flex: 1;
+}

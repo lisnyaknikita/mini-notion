@@ -1,0 +1,53 @@
+@import '../../assets/styles/variables.scss';
+
+.folders {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  overflow-y: auto;
+  max-height: 550px;
+  transform: translateX(-1000%);
+  &:global(.opened) {
+    transform: translateX(0);
+  }
+  > li {
+  }
+}
+.folder {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 20px;
+  background-color: transparent;
+  transition: all 0.3s;
+  &:hover {
+    background-color: darken(#fff, 75%);
+    .editFolderBtn {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  p {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.badge {
+  cursor: pointer;
+}
+.editFolderBtn {
+  opacity: 0;
+  visibility: hidden;
+  margin-left: auto;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    svg path {
+      fill: $title;
+    }
+  }
+}

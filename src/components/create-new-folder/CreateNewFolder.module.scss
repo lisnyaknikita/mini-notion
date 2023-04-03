@@ -1,0 +1,33 @@
+@import '../../assets/styles/variables.scss';
+
+.createFolderBtn {
+  cursor: pointer;
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  padding: 5px;
+  width: 200px;
+  margin: auto auto 5px auto;
+  background-color: transparent;
+  transition: all 0.3s;
+  border-radius: 15px;
+  color: $text;
+  transform: translateX(-1000%);
+  &:global(.opened) {
+    transform: translateX(0);
+  }
+  &:hover {
+    .createText {
+      color: $title;
+    }
+    background-color: darken(#fff, 75%);
+  }
+}
+.createText {
+  font-size: 24px;
+  color: $text;
+  transition: all 0.3s;
+}

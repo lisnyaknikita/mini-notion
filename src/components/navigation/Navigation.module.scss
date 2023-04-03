@@ -1,0 +1,43 @@
+@import '../../assets/styles/variables.scss';
+
+.navigation {
+  overflow: hidden;
+  height: 800px;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  position: absolute;
+  background-color: $secondary;
+  width: 35px;
+  //   margin-top: 30px;
+  //   margin-bottom: 30px;
+  //   margin-left: 30px;
+  border-radius: 20px;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  &:global(.opened) {
+    width: 300px;
+  }
+}
+.showHideBtn {
+  cursor: pointer;
+  padding: 7px 6px 5px 6px;
+  transform: rotate(180deg);
+  color: $title;
+  margin-left: auto;
+  background-color: transparent;
+  border-radius: 50%;
+  transition: all 0.3s;
+  svg {
+    width: 23px;
+    height: 23px;
+  }
+  &:hover {
+    background-color: darken(#fff, 75%);
+  }
+  &:global(.opened) {
+    transform: rotate(0deg);
+  }
+}

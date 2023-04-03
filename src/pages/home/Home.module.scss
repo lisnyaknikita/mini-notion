@@ -1,0 +1,19 @@
+@import '../../assets/styles/variables.scss';
+
+.inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  margin-top: 20%;
+  width: 750px;
+  text-align: center;
+  font-size: 60px;
+  color: $title;
+  line-height: 60px;
+  span {
+    text-transform: uppercase;
+    // font-style: italic;
+  }
+}
