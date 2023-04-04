@@ -12,6 +12,7 @@
     font-size: 28px;
   }
   transform: translateX(-1000%);
+  transition: all 0.3s;
   &:global(.opened) {
     transform: translateX(0);
   }

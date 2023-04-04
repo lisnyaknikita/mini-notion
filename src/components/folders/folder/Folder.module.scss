@@ -1,0 +1,41 @@
+@import '../../../assets/styles/variables.scss';
+
+.folder {
+  display: flex;
+  position: relative;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 20px;
+  background-color: transparent;
+  transition: all 0.3s;
+  &:hover {
+    background-color: darken(#fff, 75%);
+    .editFolderBtn {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  a {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: $text;
+    text-decoration: none;
+  }
+}
+
+.badge {
+  cursor: pointer;
+}
+.editFolderBtn {
+  opacity: 0;
+  visibility: hidden;
+  margin-left: auto;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    svg path {
+      fill: $title;
+    }
+  }
+}

@@ -11,15 +11,28 @@ button {
   font-family: 'Roboto', sans-serif;
   color: #fff;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 .wrapper {
   display: flex;
   width: 100vw;
   height: 100vh;
-  position: relative;
+}
+.navigation {
+  display: flex;
+  align-items: center;
+  width: 390px;
+  padding-left: 30px;
+  margin-right: 30px;
 }
 .inner {
   // width: 100vh;
   // height: 100vh;
   flex: 1;
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
 }

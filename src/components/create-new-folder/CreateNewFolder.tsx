@@ -4,10 +4,14 @@ import { FiPlus } from 'react-icons/fi';
 
 import classes from './CreateNewFolder.module.scss';
 import { IconContext } from 'react-icons';
+import { useAppSelector } from '../../hooks/reduxHooks';
+import clsx from 'clsx';
 
 const CreateNewFolder: FC = () => {
+  const isNavOpen = useAppSelector((state) => state.navigation.isNavOpen);
+
   return (
-    <button className={classes.createFolderBtn}>
+    <button className={clsx(classes.createFolderBtn, isNavOpen && 'opened')}>
       <span>
         <IconContext.Provider
           value={{
