@@ -26,7 +26,6 @@ a {
   align-items: center;
   width: 390px;
   padding-left: 30px;
-  margin-right: 30px;
 }
 .inner {
   // width: 100vh;
@@ -35,4 +34,42 @@ a {
   display: flex;
   // justify-content: center;
   // align-items: center;
+}
+.ql-picker-options {
+  background-color: $secondary !important;
+  border: none !important;
+}
+.ql-toolbar {
+  border: 0 !important;
+  // border-bottom: 1px solid $title !important;
+  font-family: 'Roboto', sans-serif !important;
+  span {
+    color: $title !important;
+  }
+  // svg path,
+  // svg rect,
+  // svg line {
+  //   fill: $title !important;
+  // }
+}
+.ql-editor {
+  img {
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+  }
+}
+.ql-container {
+  border: none !important;
+  border-left: 1px solid #484848 !important;
+}
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.noteLoader {
+  position: absolute;
+  top: -10%;
+  left: 50%;
 }

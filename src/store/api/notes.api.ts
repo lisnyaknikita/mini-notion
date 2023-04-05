@@ -8,12 +8,15 @@ export const notesApi = createApi({
     baseUrl: 'https://642a990fb11efeb7599d312a.mockapi.io/',
   }),
   endpoints: (builder) => ({
-    getNotes: builder.query<INote, null>({
+    getNotes: builder.query<INote[], null>({
       query: () => `/notes`,
+    }),
+    getNoteById: builder.query<INote, string>({
+      query: (id) => `/notes/${id}`,
     }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetNotesQuery } = notesApi;
+export const { useGetNotesQuery, useGetNoteByIdQuery } = notesApi;

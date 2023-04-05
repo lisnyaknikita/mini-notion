@@ -1,0 +1,36 @@
+@import '../../assets/styles/variables.scss';
+
+.inner {
+  margin-top: 35px;
+}
+.title {
+  font-size: 44px;
+  color: $title;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+.addNewNote {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 26px;
+  cursor: pointer;
+  padding: 15px;
+  background-color: $secondary;
+  color: $text;
+  border-radius: 10px;
+  transition: all 0.3s;
+  &:hover {
+    background-color: darken($secondary, 2%);
+    color: $title;
+  }
+  margin-bottom: 30px;
+}
+.notesList {
+  height: 715px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+}

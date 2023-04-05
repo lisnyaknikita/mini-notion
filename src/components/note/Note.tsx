@@ -1,19 +1,34 @@
 import { FC } from 'react';
 
 import classes from './Note.module.scss';
+import { Link } from 'react-router-dom';
+import { useGetNoteByIdQuery } from '../../store/api/notes.api';
+import { NoteProps } from './NoteTypes';
+import { ThreeDots } from 'react-loader-spinner';
 
-const Note: FC = () => {
+const Note: FC<NoteProps> = ({ id }) => {
+  const { data, isLoading, isError } = useGetNoteByIdQuery(id);
+
   return (
     <li className={classes.note}>
-      <a className={classes.noteLink} href='#'>
-        <h3 className={classes.noteTitle}>Title of a note</h3>
-        <p className={classes.noteText}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo,
-          aspernatur. Illo, pariatur. Suscipit mollitia molestiae temporibus
-          velit sequi quod accusantium, facilis natus nulla, reiciendis unde
-          autem eligendi laboriosam repudiandae atque?
-        </p>
-      </a>
+      {isError && <h2>Error!</h2>}
+      <Link to={`/notes/${data?.id}`} className={classes.noteLink}>
+        {isLoading && (
+          <ThreeDots
+            height='80'
+            width='80'
+            radius='9'
+            color='#feffff'
+            ariaLabel='three-dots-loading'
+            wrapperStyle={{}}
+            wrapperClass='noteLoader'
+            visible={true}
+          />
+        )}
+        <h3 className={classes.noteTitle}>{data && data?.title}</h3>
+        <p className={classes.noteText}>{data?.text}</p>
+      </Link>
+      <button className={classes.deleteBtn}>Delete</button>
     </li>
   );
 };

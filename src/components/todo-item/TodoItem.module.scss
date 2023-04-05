@@ -1,8 +1,15 @@
 @import '../../assets/styles/variables.scss';
 
-.note {
-  width: 1300px;
+.todoItem {
+  max-width: 1300px;
   position: relative;
+  padding: 10px;
+  background-color: $secondary;
+  border-radius: 10px;
+  transition: all 0.3s;
+  &:hover {
+    background-color: darken($secondary, 2%);
+  }
   &:not(:last-child) {
     margin-bottom: 20px;
   }
@@ -12,27 +19,18 @@
       visibility: visible;
     }
   }
-}
-.noteLink {
-  padding: 25px 20px;
-  width: 100%;
-  display: inline-block;
-  background-color: $secondary;
-  border-radius: 10px;
-  transition: all 0.3s;
-  &:hover {
-    background-color: darken($secondary, 2%);
+  label span {
+    font-size: 22px;
+    color: $title;
+  }
+  &:global(.done) {
+    opacity: 0.4;
   }
 }
-.noteTitle {
-  font-size: 28px;
-  text-align: center;
-  color: $title;
-  margin-bottom: 15px;
-}
-.noteText {
+.todoDescr {
+  padding-left: 32px;
+  font-size: 16px;
   color: $text;
-  font-size: 20px;
   -webkit-line-clamp: 3; /* Число отображаемых строк */
   display: -webkit-box; /* Включаем флексбоксы */
   -webkit-box-orient: vertical; /* Вертикальная ориентация */

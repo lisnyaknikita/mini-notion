@@ -1,0 +1,31 @@
+@import '../../assets/styles/variables.scss';
+
+.inner {
+  margin-top: 35px;
+  padding-top: 300px;
+}
+.title {
+  font-size: 44px;
+  color: $title;
+  font-weight: 700;
+  margin-bottom: 70px;
+  margin-top: -30px;
+}
+.journaling {
+  width: 1300px;
+}
+.journalingEditor {
+  width: 100%;
+}
+.journalingBg {
+  img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 1920px;
+    height: 300px;
+    object-fit: cover;
+    z-index: -1;
+  }
+}
