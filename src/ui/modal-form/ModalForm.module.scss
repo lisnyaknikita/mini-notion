@@ -1,0 +1,21 @@
+@import '../../assets/styles/variables.scss';
+
+.modalBg {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #000000c4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalBody {
+  padding: 20px;
+  width: 550px;
+  height: 300px;
+  background-color: $secondary;
+  border-radius: 15px;
+}

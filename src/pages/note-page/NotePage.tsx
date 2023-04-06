@@ -1,17 +1,28 @@
-import { FC, useState } from 'react';
+import {
+  ChangeEvent,
+  ChangeEventHandler,
+  FC,
+  FormEvent,
+  useEffect,
+  useState,
+} from 'react';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 import classes from './NotePage.module.scss';
 import { useParams } from 'react-router-dom';
-import { useGetNoteByIdQuery } from '../../store/api/notes.api';
+import {
+  useGetNoteByIdQuery,
+  useUpdateNoteMutation,
+} from '../../store/api/notes.api';
 
 const NotePage: FC = () => {
   const params = useParams();
 
   //@ts-ignore
-  const { data, isLoading, isError } = useGetNoteByIdQuery(params.id);
+  const { data, isLoading, isError } = useGetNoteByIdQuery(params?.id);
+  const [updateNote, {}] = useUpdateNoteMutation();
 
   const [value, setValue] = useState(data?.text);
 
@@ -45,6 +56,11 @@ const NotePage: FC = () => {
           onChange={setValue}
         />
       </div>
+      <button
+      // onClick={() => updateNote()}
+      >
+        Update
+      </button>
     </div>
   );
 };

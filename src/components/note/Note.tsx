@@ -2,12 +2,16 @@ import { FC } from 'react';
 
 import classes from './Note.module.scss';
 import { Link } from 'react-router-dom';
-import { useGetNoteByIdQuery } from '../../store/api/notes.api';
+import {
+  useDeleteNoteMutation,
+  useGetNoteByIdQuery,
+} from '../../store/api/notes.api';
 import { NoteProps } from './NoteTypes';
 import { ThreeDots } from 'react-loader-spinner';
 
 const Note: FC<NoteProps> = ({ id }) => {
   const { data, isLoading, isError } = useGetNoteByIdQuery(id);
+  const [deleteNote, {}] = useDeleteNoteMutation();
 
   return (
     <li className={classes.note}>
@@ -28,7 +32,13 @@ const Note: FC<NoteProps> = ({ id }) => {
         <h3 className={classes.noteTitle}>{data && data?.title}</h3>
         <p className={classes.noteText}>{data?.text}</p>
       </Link>
-      <button className={classes.deleteBtn}>Delete</button>
+      <button
+        className={classes.deleteBtn}
+        //@ts-ignore
+        onClick={() => deleteNote(data?.id)}
+      >
+        Delete
+      </button>
     </li>
   );
 };

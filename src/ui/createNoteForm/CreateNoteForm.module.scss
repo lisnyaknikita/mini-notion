@@ -1,0 +1,43 @@
+@import '../../assets/styles/variables.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.formTitle {
+  font-size: 36px;
+  margin-bottom: 35px;
+  color: $title;
+}
+input {
+  background-color: $primary;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 20px 10px;
+  color: $text;
+  width: 400px;
+  font-size: 21px;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+  &::placeholder {
+    color: $text;
+  }
+  &:focus {
+    background-color: darken($primary, 2%);
+  }
+}
+.formBtn {
+  width: 150px;
+  padding: 15px 10px;
+  font-size: 20px;
+  background-color: $primary;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background-color: darken($primary, 4%);
+  }
+}
