@@ -4,3 +4,4 @@ export interface ITodo {
   text: string;
   status: boolean;
 }
+export interface ITodoData extends Omit<ITodo, 'id'> {}

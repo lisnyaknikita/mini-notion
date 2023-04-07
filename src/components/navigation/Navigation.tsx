@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import { MdOutlineKeyboardDoubleArrowLeft } from 'react-icons/md';
 
@@ -6,10 +6,9 @@ import classes from './Navigation.module.scss';
 
 import UserInfo from '../user-info/UserInfo';
 import Folders from '../folders/Folders';
-import CreateNewFolder from '../create-new-folder/CreateNewFolder';
+import Settings from '../settings/Settings';
 import clsx from 'clsx';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { RootState } from '../../store/store';
 import { toggleNavOpen } from '../../store/slices/navigationSlice';
 
 const Navigation: FC = () => {
@@ -33,7 +32,7 @@ const Navigation: FC = () => {
 
       <UserInfo />
       <Folders />
-      <CreateNewFolder />
+      <Settings />
     </div>
   );
 };

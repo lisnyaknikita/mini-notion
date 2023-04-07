@@ -24,7 +24,8 @@
     color: $title;
   }
   &:global(.done) {
-    opacity: 0.4;
+    opacity: 0.2;
+    text-decoration: line-through;
   }
 }
 .todoDescr {

@@ -12,7 +12,6 @@ const Folders: FC = () => {
 
   return (
     <ul className={clsx(classes.folders, isNavOpen && 'opened')}>
-      {/*add map*/}
       <FolderNotes />
       <FolderTodos />
       <FolderJournaling />

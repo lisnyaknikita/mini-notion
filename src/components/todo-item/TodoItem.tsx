@@ -1,27 +1,32 @@
 import { FC, useState } from 'react';
 
 import classes from './TodoItem.module.scss';
-import { Link } from 'react-router-dom';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import clsx from 'clsx';
 import { TodoItemProps } from './TodoItemTypes';
-import { useGetTodoByIdQuery } from '../../store/api/todos.api';
+import {
+  useDeleteTodoMutation,
+  useGetTodoByIdQuery,
+  useUpdateStatusMutation,
+} from '../../store/api/todos.api';
 import { ThreeDots } from 'react-loader-spinner';
 
 const TodoItem: FC<TodoItemProps> = ({ id }) => {
   const { data, isLoading, isError } = useGetTodoByIdQuery(id);
+  const [updateStatus, {}] = useUpdateStatusMutation();
 
-  const [done, setDone] = useState(false);
+  const [deleteTodo, {}] = useDeleteTodoMutation();
 
   const handleDoneStatus = () => {
-    setDone((prev) => !prev);
+    //@ts-ignore
+    updateStatus({ ...data, status: !data?.status });
   };
 
   return (
-    <li className={clsx(classes.todoItem, done && 'done')}>
-      {isError && <h1>Error!</h1>}
+    <li className={clsx(classes.todoItem, data?.status === true && 'done')}>
+      {isError && <h1 style={{ color: 'red' }}>Error!</h1>}
       {isLoading && (
         <ThreeDots
           height='80'
@@ -39,7 +44,7 @@ const TodoItem: FC<TodoItemProps> = ({ id }) => {
           control={
             <Checkbox
               color='secondary'
-              checked={done}
+              checked={data?.status}
               onChange={handleDoneStatus}
             />
           }
@@ -47,7 +52,13 @@ const TodoItem: FC<TodoItemProps> = ({ id }) => {
         />
       </FormGroup>
       <p className={classes.todoDescr}>{data?.text}</p>
-      <button className={classes.deleteBtn}>Delete</button>
+      <button
+        className={classes.deleteBtn}
+        //@ts-ignore
+        onClick={() => deleteTodo(data?.id)}
+      >
+        Delete
+      </button>
     </li>
   );
 };

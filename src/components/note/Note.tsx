@@ -13,6 +13,12 @@ const Note: FC<NoteProps> = ({ id }) => {
   const { data, isLoading, isError } = useGetNoteByIdQuery(id);
   const [deleteNote, {}] = useDeleteNoteMutation();
 
+  const noteTextWithoutTags = new DOMParser().parseFromString(
+    //@ts-ignore
+    data?.text,
+    'text/html'
+  );
+
   return (
     <li className={classes.note}>
       {isError && <h2>Error!</h2>}
@@ -30,7 +36,9 @@ const Note: FC<NoteProps> = ({ id }) => {
           />
         )}
         <h3 className={classes.noteTitle}>{data && data?.title}</h3>
-        <p className={classes.noteText}>{data?.text}</p>
+        <p className={classes.noteText}>
+          {noteTextWithoutTags.body.textContent}
+        </p>
       </Link>
       <button
         className={classes.deleteBtn}

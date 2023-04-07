@@ -42,6 +42,7 @@ const FolderNotes: FC = () => {
 
   const handleChangeColor = (color: string) => {
     setColor(color);
+    localStorage.setItem('notesFolderColor', color);
   };
 
   return (
@@ -54,7 +55,7 @@ const FolderNotes: FC = () => {
         >
           <IconContext.Provider
             value={{
-              color: `${color}`,
+              color: `${localStorage.getItem('notesFolderColor')}`,
               className: 'global-class-name',
               size: '1.5em',
             }}

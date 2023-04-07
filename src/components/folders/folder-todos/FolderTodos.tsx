@@ -41,6 +41,7 @@ const FolderTodos: FC = () => {
 
   const handleChangeColor = (color: string) => {
     setColor(color);
+    localStorage.setItem('todosFolderColor', color);
   };
 
   return (
@@ -53,7 +54,7 @@ const FolderTodos: FC = () => {
         >
           <IconContext.Provider
             value={{
-              color: `${color}`,
+              color: `${localStorage.getItem('todosFolderColor')}`,
               className: 'global-class-name',
               size: '1.5em',
             }}

@@ -42,6 +42,7 @@ const FolderJournaling: FC = () => {
 
   const handleChangeColor = (color: string) => {
     setColor(color);
+    localStorage.setItem('journalingFolderColor', color);
   };
 
   return (
@@ -54,7 +55,7 @@ const FolderJournaling: FC = () => {
         >
           <IconContext.Provider
             value={{
-              color: `${color}`,
+              color: `${localStorage.getItem('journalingFolderColor')}`,
               className: 'global-class-name',
               size: '1.5em',
             }}

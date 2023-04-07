@@ -19,6 +19,11 @@ export const notesApi = createApi({
     }),
     getNoteById: builder.query<INote, string>({
       query: (id) => `/notes/${id}`,
+      providesTags: () => [
+        {
+          type: 'Note',
+        },
+      ],
     }),
     createNote: builder.mutation<INote, INoteData>({
       query: (note) => ({
@@ -32,7 +37,19 @@ export const notesApi = createApi({
         },
       ],
     }),
-    updateNote: builder.mutation<INote, INote>({
+    updateNoteText: builder.mutation<INote, INote>({
+      query: (note) => ({
+        url: `/notes/${note.id}`,
+        method: 'PUT',
+        body: note,
+      }),
+      invalidatesTags: () => [
+        {
+          type: 'Note',
+        },
+      ],
+    }),
+    updateNoteTitle: builder.mutation<INote, INote>({
       query: (note) => ({
         url: `/notes/${note.id}`,
         method: 'PUT',
@@ -65,5 +82,6 @@ export const {
   useGetNoteByIdQuery,
   useCreateNoteMutation,
   useDeleteNoteMutation,
-  useUpdateNoteMutation,
+  useUpdateNoteTextMutation,
+  useUpdateNoteTitleMutation,
 } = notesApi;
