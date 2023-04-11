@@ -1,15 +1,23 @@
 import { FC } from 'react';
 
-import classes from './Note.module.scss';
 import { Link } from 'react-router-dom';
+import { ThreeDots } from 'react-loader-spinner';
+
 import {
   useDeleteNoteMutation,
   useGetNoteByIdQuery,
 } from '../../store/api/notes.api';
-import { NoteProps } from './NoteTypes';
-import { ThreeDots } from 'react-loader-spinner';
+import { NoteProps } from './Note.types';
+
+import { useAppSelector } from '../../hooks/reduxHooks';
+
+import clsx from 'clsx';
+
+import classes from './Note.module.scss';
 
 const Note: FC<NoteProps> = ({ id }) => {
+  const isNavOpen = useAppSelector((state) => state.navigation.isNavOpen);
+
   const { data, isLoading, isError } = useGetNoteByIdQuery(id);
   const [deleteNote, {}] = useDeleteNoteMutation();
 
@@ -20,8 +28,8 @@ const Note: FC<NoteProps> = ({ id }) => {
   );
 
   return (
-    <li className={classes.note}>
-      {isError && <h2>Error!</h2>}
+    <li className={clsx(classes.note, !isNavOpen && 'full')}>
+      {isError && <h2 style={{ color: 'red' }}>Error!</h2>}
       <Link to={`/notes/${data?.id}`} className={classes.noteLink}>
         {isLoading && (
           <ThreeDots

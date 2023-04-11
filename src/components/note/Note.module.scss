@@ -1,8 +1,20 @@
 @import '../../assets/styles/variables.scss';
 
 .note {
-  width: 1300px;
+  width: 1400px;
+  overflow: hidden;
+  box-sizing: border-box;
   position: relative;
+  @media (max-width: 1785px) {
+    width: 100%;
+  }
+
+  &:global(.full) {
+    width: 100%;
+    .noteTitle {
+      max-width: 1610px;
+    }
+  }
   &:not(:last-child) {
     margin-bottom: 20px;
   }
@@ -15,6 +27,7 @@
 }
 .noteLink {
   padding: 25px 20px;
+  box-sizing: border-box;
   width: 100%;
   display: inline-block;
   background-color: $secondary;
@@ -23,20 +36,64 @@
   &:hover {
     background-color: darken($secondary, 2%);
   }
+  @media (max-width: 1400px) {
+    padding: 20px 15px;
+  }
+  @media (max-width: 1200px) {
+    padding: 15px 10px;
+  }
+  @media (max-width: 400px) {
+    padding: 10px 5px;
+  }
 }
 .noteTitle {
   font-size: 28px;
+  line-height: 31px;
   text-align: center;
   color: $title;
   margin-bottom: 15px;
-}
-.noteText {
-  color: $text;
-  font-size: 20px;
+  max-width: 1360px;
   -webkit-line-clamp: 3; /* Число отображаемых строк */
   display: -webkit-box; /* Включаем флексбоксы */
   -webkit-box-orient: vertical; /* Вертикальная ориентация */
   overflow: hidden;
+  @media (max-width: 1400px) {
+    font-size: 26px;
+    line-height: 29px;
+  }
+  @media (max-width: 1200px) {
+    font-size: 24px;
+    line-height: 27px;
+  }
+  @media (max-width: 835px) {
+    font-size: 22px;
+    line-height: 25px;
+  }
+  @media (max-width: 400px) {
+    font-size: 20px;
+    line-height: 23px;
+  }
+}
+.noteText {
+  color: $text;
+  font-size: 20px;
+  line-height: 24px;
+  -webkit-line-clamp: 3; /* Число отображаемых строк */
+  display: -webkit-box; /* Включаем флексбоксы */
+  -webkit-box-orient: vertical; /* Вертикальная ориентация */
+  overflow: hidden;
+  @media (max-width: 1200px) {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  @media (max-width: 835px) {
+    font-size: 17px;
+    line-height: 24px;
+  }
+  @media (max-width: 400px) {
+    font-size: 15px;
+    line-height: 20px;
+  }
 }
 .deleteBtn {
   position: absolute;

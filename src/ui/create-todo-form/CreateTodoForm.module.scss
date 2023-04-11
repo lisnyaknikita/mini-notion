@@ -40,6 +40,9 @@ input {
   &:hover {
     background-color: darken($primary, 4%);
   }
+  @media (max-width: 630px) {
+    width: 150px !important;
+  }
 }
 .closeBtn {
   position: absolute;
@@ -56,5 +59,8 @@ input {
   }
   svg {
     margin-top: 5px;
+  }
+  @media (max-width: 630px) {
+    width: 44px !important;
   }
 }

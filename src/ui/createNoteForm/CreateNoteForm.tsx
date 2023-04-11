@@ -1,25 +1,27 @@
-import { FC, FormEvent, ReactEventHandler, useEffect, useRef } from 'react';
+import { FC, useEffect } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
+import { CreateNoteFormProps, FormValues } from './CreateNoteForm.types';
+import { INoteData } from '../../types/notes';
+
+import { useCreateNoteMutation } from '../../store/api/notes.api';
+
+import { IoMdClose } from 'react-icons/io';
 
 import classes from './CreateNoteForm.module.scss';
-import { CreateNoteFormProps, FormValues } from './CreateNoteFormTypes';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { useCreateNoteMutation } from '../../store/api/notes.api';
-import { INoteData } from '../../types/notes';
-import { IoMdClose } from 'react-icons/io';
 
 const CreateNoteForm: FC<CreateNoteFormProps> = ({
   isNoteModalOpen,
   setIsNoteModalOpen,
 }) => {
-  const [createNote, { isError }] = useCreateNoteMutation();
-
-  const firstInputRef = useRef<HTMLInputElement>(null);
+  const [createNote, {}] = useCreateNoteMutation();
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
+    setFocus,
   } = useForm<FormValues>({ mode: 'onChange' });
   //@ts-ignore
   const onSubmit: SubmitHandler<FormValues> = (data: INoteData) => {
@@ -29,10 +31,8 @@ const CreateNoteForm: FC<CreateNoteFormProps> = ({
   };
 
   useEffect(() => {
-    if (isNoteModalOpen && firstInputRef.current) {
-      firstInputRef.current.focus();
-    }
-  }, [isNoteModalOpen]);
+    setFocus('title');
+  }, []);
 
   return (
     <>
@@ -45,10 +45,9 @@ const CreateNoteForm: FC<CreateNoteFormProps> = ({
       <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
         <h3 className={classes.formTitle}>Create a new note</h3>
         <input
-          {...register('title')}
+          {...register('title', { required: 'Enter the title, please' })}
           type='text'
           placeholder='Enter the title...'
-          ref={firstInputRef}
         />
         {errors?.title && (
           <p style={{ color: 'red', marginTop: -10, marginBottom: 5 }}>

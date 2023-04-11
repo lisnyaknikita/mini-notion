@@ -3,7 +3,7 @@ import { FC } from 'react';
 import classes from './SettingsModal.module.scss';
 import FormGroup from '@mui/material/FormGroup';
 import { FormControlLabel, Switch } from '@mui/material';
-import { SettingsModalProps } from './SettingsModalTypes';
+import { SettingsModalProps } from './SettingsModal.types';
 import { IoMdClose } from 'react-icons/io';
 
 const SettingsModal: FC<SettingsModalProps> = ({ setIsModalOpen }) => {

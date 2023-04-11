@@ -1,19 +1,44 @@
 @import '../../assets/styles/variables.scss';
 
 .userInfo {
-  margin-bottom: 80px;
+  margin-bottom: 150px;
   margin-top: 30px;
   display: flex;
   gap: 15px;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
+  @media (max-width: 740px) {
+    margin-bottom: 65px;
+  }
   p {
     color: $title;
-    font-size: 28px;
+    font-size: 36px;
+    @media (max-width: 768px) {
+      font-size: 28px;
+    }
   }
   transform: translateX(-1000%);
   transition: all 0.3s;
   &:global(.opened) {
     transform: translateX(0);
+  }
+  &:hover {
+    .editBtn {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+.editBtn {
+  font-size: 25px;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  @media (max-width: 768px) {
+    font-size: 20px;
   }
 }

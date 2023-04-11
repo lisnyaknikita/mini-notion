@@ -28,6 +28,9 @@ input {
   &:focus {
     background-color: darken($primary, 2%);
   }
+  @media (max-width: 630px) {
+    margin-bottom: 15px !important;
+  }
 }
 .formBtn {
   width: 150px;
@@ -39,6 +42,9 @@ input {
   transition: all 0.3s;
   &:hover {
     background-color: darken($primary, 4%);
+  }
+  @media (max-width: 630px) {
+    width: 150px !important;
   }
 }
 .closeBtn {
@@ -56,5 +62,8 @@ input {
   }
   svg {
     margin-top: 5px;
+  }
+  @media (max-width: 630px) {
+    width: 44px !important;
   }
 }

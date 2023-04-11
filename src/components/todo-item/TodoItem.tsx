@@ -1,17 +1,21 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
+import { ThreeDots } from 'react-loader-spinner';
 
-import classes from './TodoItem.module.scss';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+
 import clsx from 'clsx';
-import { TodoItemProps } from './TodoItemTypes';
+
+import { TodoItemProps } from './TodoItem.types';
+
 import {
   useDeleteTodoMutation,
   useGetTodoByIdQuery,
   useUpdateStatusMutation,
 } from '../../store/api/todos.api';
-import { ThreeDots } from 'react-loader-spinner';
+
+import classes from './TodoItem.module.scss';
 
 const TodoItem: FC<TodoItemProps> = ({ id }) => {
   const { data, isLoading, isError } = useGetTodoByIdQuery(id);

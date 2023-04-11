@@ -8,11 +8,23 @@
   color: $title;
   font-weight: 700;
   margin-bottom: 20px;
+  @media (max-width: 740px) {
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
 }
 .number {
   font-size: 28px;
   color: $text;
   margin-bottom: 40px;
+  span {
+    font-weight: 800;
+  }
+  @media (max-width: 740px) {
+    margin-left: 30px;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
 }
 .addNewTask {
   display: flex;
@@ -30,10 +42,23 @@
     color: $title;
   }
   margin-bottom: 30px;
+  @media (max-width: 740px) {
+    margin-left: 30px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+  }
 }
 .todosList {
   height: 660px;
   overflow-y: auto;
+  max-width: 1600px;
+  @media (max-width: 1785px) {
+    max-width: 1500px;
+    padding-right: 20px;
+  }
+  @media (max-width: 740px) {
+    margin-left: 30px;
+  }
   &::-webkit-scrollbar {
     width: 0px;
     height: 0px;

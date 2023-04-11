@@ -1,18 +1,24 @@
 import { FC, useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { modules } from './Editor.modules';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { BsPencil } from 'react-icons/bs';
 
-import classes from './NotePage.module.scss';
-import { useParams } from 'react-router-dom';
+import { BsPencil } from 'react-icons/bs';
+import { IoMdClose } from 'react-icons/io';
+
 import {
   useGetNoteByIdQuery,
   useUpdateNoteTextMutation,
   useUpdateNoteTitleMutation,
 } from '../../store/api/notes.api';
+
 import ModalForm from '../../ui/modal-form/ModalForm';
-import { IoMdClose } from 'react-icons/io';
+import Tooltip from '@mui/material/Tooltip';
+
+import classes from './NotePage.module.scss';
 
 const NotePage: FC = () => {
   const params = useParams();
@@ -24,26 +30,10 @@ const NotePage: FC = () => {
     useUpdateNoteTitleMutation();
 
   const [value, setValue] = useState(data?.text);
-
   const [newTitle, setNewTitle] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const firstInputRef = useRef<HTMLInputElement>(null);
-
-  const modules = {
-    toolbar: [
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      [{ font: [] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ color: [] }, { background: [] }],
-      ['link', 'image'],
-      ['blockquote', 'code-block'],
-      [{ list: 'ordered' }, { list: 'bullet' }],
-      [{ script: 'sub' }, { script: 'super' }],
-      [{ direction: 'rtl' }],
-      [{ align: [] }],
-    ],
-  };
 
   const updateTitleHandler = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,7 +50,7 @@ const NotePage: FC = () => {
 
   return (
     <div className={classes.inner}>
-      {isError && <h2>Error!</h2>}
+      {isError && <h2 style={{ color: 'red' }}>Error!</h2>}
       <div className={classes.noteBg}>
         <img
           src={
@@ -100,12 +90,14 @@ const NotePage: FC = () => {
       )}
       <div className={classes.noteTitle}>
         <h2>{isTitleLoading ? <h3>Loading...</h3> : data?.title}</h2>
-        <button
-          className={classes.editTitleBtn}
-          onClick={() => setIsModalOpen(true)}
-        >
-          <BsPencil />
-        </button>
+        <Tooltip title='Edit title'>
+          <button
+            className={classes.editTitleBtn}
+            onClick={() => setIsModalOpen(true)}
+          >
+            <BsPencil />
+          </button>
+        </Tooltip>
       </div>
       <div className={classes.noteEditor}>
         <ReactQuill
@@ -115,13 +107,15 @@ const NotePage: FC = () => {
           onChange={setValue}
         />
       </div>
-      <button
-        className={classes.updateBtn}
-        //@ts-ignore
-        onClick={() => updateNoteText({ ...data, text: value })}
-      >
-        Update
-      </button>
+      <Tooltip title='Update the note text'>
+        <button
+          className={classes.updateBtn}
+          //@ts-ignore
+          onClick={() => updateNoteText({ ...data, text: value })}
+        >
+          Update
+        </button>
+      </Tooltip>
     </div>
   );
 };

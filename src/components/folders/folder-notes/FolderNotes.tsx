@@ -2,13 +2,12 @@ import { FC, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaFolder } from 'react-icons/fa';
-import { RxDotsHorizontal } from 'react-icons/rx';
+import { IconContext } from 'react-icons';
+
+import Tooltip from '@mui/material/Tooltip';
+import FolderBadgeModal from '../../../ui/folderBadgeModal/FolderBadgeModal';
 
 import classes from './FolderNotes.module.scss';
-import { IconContext } from 'react-icons';
-import Tooltip from '@mui/material/Tooltip';
-import FolderEditModal from '../../../ui/folderEditModal/FolderEditModal';
-import FolderBadgeModal from '../../../ui/folderBadgeModal/FolderBadgeModal';
 
 const FolderNotes: FC = () => {
   const [isEditBtnClicked, setIsEditBtnClicked] = useState(false);
@@ -57,7 +56,7 @@ const FolderNotes: FC = () => {
             value={{
               color: `${localStorage.getItem('notesFolderColor')}`,
               className: 'global-class-name',
-              size: '1.5em',
+              size: '2em',
             }}
           >
             <FaFolder />
@@ -70,23 +69,6 @@ const FolderNotes: FC = () => {
       <p>
         <Link to={'/notes'}>Notes</Link>
       </p>
-      <Tooltip title='Edit'>
-        <button
-          className={classes.editFolderBtn}
-          onClick={() => setIsEditBtnClicked((prev) => !prev)}
-        >
-          <IconContext.Provider
-            value={{
-              color: '#bcbdbf',
-              className: 'global-class-name',
-              size: '1.6em',
-            }}
-          >
-            {<RxDotsHorizontal />}
-          </IconContext.Provider>
-        </button>
-      </Tooltip>
-      {isEditBtnClicked && <FolderEditModal />}
     </li>
   );
 };

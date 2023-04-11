@@ -1,16 +1,20 @@
 import { FC, useState } from 'react';
+import { ThreeDots } from 'react-loader-spinner';
 
 import { FiPlus } from 'react-icons/fi';
 
 import Note from '../../components/note/Note';
 
-import classes from './NotesPage.module.scss';
 import Tooltip from '@mui/material/Tooltip';
-import { useGetNotesQuery } from '../../store/api/notes.api';
-import { ThreeDots } from 'react-loader-spinner';
+
 import ModalForm from '../../ui/modal-form/ModalForm';
 import CreateNoteForm from '../../ui/createNoteForm/CreateNoteForm';
+
+import { useGetNotesQuery } from '../../store/api/notes.api';
+
 import { INote } from '../../types/notes';
+
+import classes from './NotesPage.module.scss';
 
 const NotesPage: FC = () => {
   const { data, isLoading, isError } = useGetNotesQuery(null);
@@ -39,7 +43,7 @@ const NotesPage: FC = () => {
         </Tooltip>
 
         <ul className={classes.notesList}>
-          {isError && <h2>Error!</h2>}
+          {isError && <h2 style={{ color: 'red' }}>Error!</h2>}
           {isLoading && (
             <ThreeDots
               height='80'
@@ -52,7 +56,7 @@ const NotesPage: FC = () => {
               visible={true}
             />
           )}
-          {data?.map((note) => (
+          {data?.map((note: INote) => (
             <Note key={note.id} id={note.id} />
           ))}
         </ul>

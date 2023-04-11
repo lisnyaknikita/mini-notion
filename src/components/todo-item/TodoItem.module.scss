@@ -1,12 +1,17 @@
 @import '../../assets/styles/variables.scss';
 
 .todoItem {
-  max-width: 1300px;
+  max-width: 1400px;
   position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
   padding: 10px;
   background-color: $secondary;
   border-radius: 10px;
   transition: all 0.3s;
+  @media (max-width: 1785px) {
+    width: 100%;
+  }
   &:hover {
     background-color: darken($secondary, 2%);
   }
@@ -22,6 +27,15 @@
   label span {
     font-size: 22px;
     color: $title;
+    @media (max-width: 740px) {
+      font-size: 20px;
+    }
+  }
+  label span + span {
+    -webkit-line-clamp: 1; /* Число отображаемых строк */
+    display: -webkit-box; /* Включаем флексбоксы */
+    -webkit-box-orient: vertical; /* Вертикальная ориентация */
+    overflow: hidden;
   }
   &:global(.done) {
     opacity: 0.2;

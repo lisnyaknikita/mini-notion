@@ -8,6 +8,10 @@
   color: $title;
   font-weight: 700;
   margin-bottom: 40px;
+  @media (max-width: 740px) {
+    margin-left: 30px;
+    margin-bottom: 20px;
+  }
 }
 .addNewNote {
   display: flex;
@@ -25,10 +29,23 @@
     color: $title;
   }
   margin-bottom: 30px;
+  @media (max-width: 740px) {
+    margin-left: 30px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+  }
 }
 .notesList {
   height: 715px;
   overflow-y: auto;
+  max-width: 1600px;
+  @media (max-width: 1785px) {
+    max-width: 1500px;
+    padding-right: 20px;
+  }
+  @media (max-width: 740px) {
+    margin-left: 30px;
+  }
   &::-webkit-scrollbar {
     width: 0px;
     height: 0px;

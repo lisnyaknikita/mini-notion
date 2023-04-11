@@ -6,6 +6,7 @@ body {
   font-family: 'Roboto', sans-serif;
   color: $text;
   background-color: $primary;
+  overflow-x: hidden;
 }
 button {
   font-family: 'Roboto', sans-serif;
@@ -24,16 +25,21 @@ a {
 .navigation {
   display: flex;
   align-items: center;
-  width: 390px;
   padding-left: 30px;
+  padding-right: 30px;
+  @media (max-width: 900px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 .inner {
-  // width: 100vh;
-  // height: 100vh;
   flex: 1;
   display: flex;
-  // justify-content: center;
-  // align-items: center;
+}
+.quill {
+  @media (max-width: 1800px) {
+    margin-left: 30px;
+  }
 }
 .ql-picker-options {
   background-color: $secondary !important;
@@ -41,16 +47,13 @@ a {
 }
 .ql-toolbar {
   border: 0 !important;
-  // border-bottom: 1px solid $title !important;
   font-family: 'Roboto', sans-serif !important;
   span {
     color: $title !important;
   }
-  // svg path,
-  // svg rect,
-  // svg line {
-  //   fill: $title !important;
-  // }
+  @media (max-width: 500px) {
+    margin-bottom: 20px;
+  }
 }
 .ql-editor {
   img {
@@ -62,6 +65,12 @@ a {
 .ql-container {
   border: none !important;
   border-left: 1px solid #484848 !important;
+}
+.ql-snow .ql-stroke {
+  stroke: $text !important;
+}
+.ql-snow .ql-fill {
+  fill: $text !important;
 }
 .loader {
   position: absolute;

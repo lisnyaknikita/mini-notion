@@ -19,4 +19,20 @@
   background-color: $secondary;
   border-radius: 15px;
   position: relative;
+  @media (max-width: 630px) {
+    width: 290px;
+    height: 230px;
+    h3 {
+      font-size: 22px !important;
+    }
+    input {
+      width: 250px;
+      padding: 15px;
+    }
+    button {
+      width: 120px;
+      padding: 5px 10px !important;
+      font-size: 180p !important;
+    }
+  }
 }

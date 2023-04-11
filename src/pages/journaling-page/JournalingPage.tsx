@@ -1,27 +1,20 @@
 import { FC, useState } from 'react';
-
-import classes from './JournalingPage.module.scss';
 import ReactQuill from 'react-quill';
 
+import { useAppSelector } from '../../hooks/reduxHooks';
+
+import clsx from 'clsx';
+
+import { modules } from '../note-page/Editor.modules';
+
+import classes from './JournalingPage.module.scss';
+
 const JournalingPage: FC = () => {
+  const isNavOpen = useAppSelector((state) => state.navigation.isNavOpen);
+
   const [value, setValue] = useState(
     '<h1 class="ql-align-center">On this page you can write everything about yourself, about your problems or something like that. This page will not save your thoughts after reload.</h1>'
   );
-
-  const modules = {
-    toolbar: [
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      [{ font: [] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ color: [] }, { background: [] }],
-      ['link', 'image'],
-      ['blockquote', 'code-block'],
-      [{ list: 'ordered' }, { list: 'bullet' }],
-      [{ script: 'sub' }, { script: 'super' }],
-      [{ direction: 'rtl' }],
-      [{ align: [] }],
-    ],
-  };
 
   return (
     <div className={classes.inner}>
@@ -32,7 +25,7 @@ const JournalingPage: FC = () => {
         />
       </div>
       <h2 className={classes.title}>Journaling</h2>
-      <div className={classes.journaling}>
+      <div className={clsx(classes.journaling, !isNavOpen && 'full')}>
         <div className={classes.journalingEditor}>
           <ReactQuill
             theme='snow'

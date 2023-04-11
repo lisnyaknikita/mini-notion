@@ -1,8 +1,9 @@
 import { FC } from 'react';
 
-import classes from './FolderBadgeModal.module.scss';
-import { FolderBageModalProps } from './FolderBadgeModalTypes';
+import { FolderBageModalProps } from './FolderBadgeModal.types';
 import { useAppSelector } from '../../hooks/reduxHooks';
+
+import classes from './FolderBadgeModal.module.scss';
 
 const FolderBadgeModal: FC<FolderBageModalProps> = ({ handleChangeColor }) => {
   const colors = useAppSelector((state) => state.colors.colors);
