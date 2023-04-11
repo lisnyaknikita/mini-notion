@@ -22,9 +22,8 @@ import classes from './NotePage.module.scss';
 
 const NotePage: FC = () => {
   const params = useParams();
-
   //@ts-ignore
-  const { data, isLoading, isError } = useGetNoteByIdQuery(params?.id);
+  const { data, isError } = useGetNoteByIdQuery<any>(params?.id);
   const [updateNoteText, {}] = useUpdateNoteTextMutation();
   const [updateNoteTitle, { isLoading: isTitleLoading }] =
     useUpdateNoteTitleMutation();
@@ -37,7 +36,6 @@ const NotePage: FC = () => {
 
   const updateTitleHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    //@ts-ignore
     updateNoteTitle({ ...data, title: newTitle });
     setIsModalOpen(false);
   };
@@ -110,7 +108,6 @@ const NotePage: FC = () => {
       <Tooltip title='Update the note text'>
         <button
           className={classes.updateBtn}
-          //@ts-ignore
           onClick={() => updateNoteText({ ...data, text: value })}
         >
           Update

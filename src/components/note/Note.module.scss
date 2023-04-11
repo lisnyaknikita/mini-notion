@@ -5,6 +5,7 @@
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
+  transition: all 0.3s;
   @media (max-width: 1785px) {
     width: 100%;
   }
@@ -45,6 +46,12 @@
   @media (max-width: 400px) {
     padding: 10px 5px;
   }
+  &:global(.light) {
+    background-color: $l-secondary;
+    &:hover {
+      background-color: darken($l-secondary, 4%);
+    }
+  }
 }
 .noteTitle {
   font-size: 28px;
@@ -73,6 +80,9 @@
     font-size: 20px;
     line-height: 23px;
   }
+  &:global(.light) {
+    color: $l-title;
+  }
 }
 .noteText {
   color: $text;
@@ -93,6 +103,9 @@
   @media (max-width: 400px) {
     font-size: 15px;
     line-height: 20px;
+  }
+  &:global(.light) {
+    color: $l-text;
   }
 }
 .deleteBtn {

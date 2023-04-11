@@ -25,6 +25,14 @@
   &:global(.opened) {
     transform: translateX(0);
   }
+  &:global(.light) {
+    p {
+      color: $l-title;
+    }
+    .editBtn {
+      color: $l-text;
+    }
+  }
   &:hover {
     .editBtn {
       opacity: 1;

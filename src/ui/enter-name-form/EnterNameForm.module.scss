@@ -33,4 +33,19 @@
       background-color: darken($primary, 4%);
     }
   }
+  &:global(.light) {
+    h3 {
+      color: $l-title;
+    }
+    input {
+      background-color: $l-primary;
+      color: $l-text;
+    }
+    .formBtn {
+      background-color: $l-text;
+      &:hover {
+        background-color: darken($l-text, 8%);
+      }
+    }
+  }
 }

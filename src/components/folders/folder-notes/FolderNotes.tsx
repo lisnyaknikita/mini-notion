@@ -1,15 +1,19 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaFolder } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 
 import Tooltip from '@mui/material/Tooltip';
-import FolderBadgeModal from '../../../ui/folderBadgeModal/FolderBadgeModal';
+import FolderBadgeModal from '../../../ui/folder-badge-modal/FolderBadgeModal';
 
 import classes from './FolderNotes.module.scss';
+import clsx from 'clsx';
+import { ThemeContext } from '../../../providers/ThemeContext';
 
 const FolderNotes: FC = () => {
+  const { darkMode } = useContext(ThemeContext);
+
   const [isEditBtnClicked, setIsEditBtnClicked] = useState(false);
   const [isBadgeClicked, setIsBadgeClicked] = useState(false);
   const [color, setColor] = useState('');
@@ -45,7 +49,10 @@ const FolderNotes: FC = () => {
   };
 
   return (
-    <li className={classes.folder} ref={editBtnModalRef}>
+    <li
+      className={clsx(classes.folder, !darkMode && 'light')}
+      ref={editBtnModalRef}
+    >
       <Tooltip title='Change the color'>
         <span
           className={classes.badge}

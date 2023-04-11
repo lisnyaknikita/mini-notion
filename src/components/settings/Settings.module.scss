@@ -18,6 +18,12 @@
   transform: translateX(-1000%);
   &:global(.opened) {
     transform: translateX(0);
+    &:hover {
+      .createText {
+        color: $l-title;
+      }
+      background-color: $l-secondary;
+    }
   }
   &:hover {
     .createText {
@@ -30,4 +36,7 @@
   font-size: 24px;
   color: $text;
   transition: all 0.3s;
+  &:global(.light) {
+    color: $l-text;
+  }
 }

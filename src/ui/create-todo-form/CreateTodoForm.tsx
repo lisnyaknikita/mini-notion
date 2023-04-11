@@ -1,5 +1,5 @@
-import { FC, useEffect, useRef } from 'react';
-import { useForm } from 'react-hook-form';
+import { FC, useEffect } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { IoMdClose } from 'react-icons/io';
 
@@ -10,10 +10,7 @@ import { useCreateTodoMutation } from '../../store/api/todos.api';
 
 import classes from './CreateTodoForm.module.scss';
 
-const CreateTodoForm: FC<CreateTodoFormProps> = ({
-  isTodosModalOpen,
-  setIsTodosModalOpen,
-}) => {
+const CreateTodoForm: FC<CreateTodoFormProps> = ({ setIsTodosModalOpen }) => {
   const [createTodo, {}] = useCreateTodoMutation();
 
   const {
@@ -23,7 +20,6 @@ const CreateTodoForm: FC<CreateTodoFormProps> = ({
     formState: { errors },
     setFocus,
   } = useForm<FormTodoValues>({ mode: 'onChange' });
-  //@ts-ignore
   const onSubmit: SubmitHandler<FormTodoValues> = (data: ITodoData) => {
     createTodo({ ...data, status: false });
     reset();

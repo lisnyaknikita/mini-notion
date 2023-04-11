@@ -1,6 +1,8 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 
 import { Link } from 'react-router-dom';
+import classes from './Note.module.scss';
+
 import { ThreeDots } from 'react-loader-spinner';
 
 import {
@@ -12,25 +14,26 @@ import { NoteProps } from './Note.types';
 import { useAppSelector } from '../../hooks/reduxHooks';
 
 import clsx from 'clsx';
-
-import classes from './Note.module.scss';
+import { ThemeContext } from '../../providers/ThemeContext';
 
 const Note: FC<NoteProps> = ({ id }) => {
+  const { darkMode } = useContext(ThemeContext);
+
   const isNavOpen = useAppSelector((state) => state.navigation.isNavOpen);
 
-  const { data, isLoading, isError } = useGetNoteByIdQuery(id);
+  const { data, isLoading, isError } = useGetNoteByIdQuery<any>(id);
   const [deleteNote, {}] = useDeleteNoteMutation();
 
-  const noteTextWithoutTags = new DOMParser().parseFromString(
-    //@ts-ignore
-    data?.text,
-    'text/html'
-  );
+  const noteTextWithoutTags =
+    data && new DOMParser().parseFromString(data?.text, 'text/html');
 
   return (
     <li className={clsx(classes.note, !isNavOpen && 'full')}>
       {isError && <h2 style={{ color: 'red' }}>Error!</h2>}
-      <Link to={`/notes/${data?.id}`} className={classes.noteLink}>
+      <Link
+        to={`/notes/${data?.id}`}
+        className={clsx(classes.noteLink, !darkMode && 'light')}
+      >
         {isLoading && (
           <ThreeDots
             height='80'
@@ -43,14 +46,15 @@ const Note: FC<NoteProps> = ({ id }) => {
             visible={true}
           />
         )}
-        <h3 className={classes.noteTitle}>{data && data?.title}</h3>
-        <p className={classes.noteText}>
-          {noteTextWithoutTags.body.textContent}
+        <h3 className={clsx(classes.noteTitle, !darkMode && 'light')}>
+          {data && data?.title}
+        </h3>
+        <p className={clsx(classes.noteText, !darkMode && 'light')}>
+          {noteTextWithoutTags?.body.textContent}
         </p>
       </Link>
       <button
         className={classes.deleteBtn}
-        //@ts-ignore
         onClick={() => deleteNote(data?.id)}
       >
         Delete

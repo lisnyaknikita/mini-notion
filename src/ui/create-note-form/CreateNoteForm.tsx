@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { CreateNoteFormProps, FormValues } from './CreateNoteForm.types';
@@ -9,11 +9,12 @@ import { useCreateNoteMutation } from '../../store/api/notes.api';
 import { IoMdClose } from 'react-icons/io';
 
 import classes from './CreateNoteForm.module.scss';
+import { ThemeContext } from '../../providers/ThemeContext';
+import clsx from 'clsx';
 
-const CreateNoteForm: FC<CreateNoteFormProps> = ({
-  isNoteModalOpen,
-  setIsNoteModalOpen,
-}) => {
+const CreateNoteForm: FC<CreateNoteFormProps> = ({ setIsNoteModalOpen }) => {
+  const { darkMode } = useContext(ThemeContext);
+
   const [createNote, {}] = useCreateNoteMutation();
 
   const {
@@ -37,13 +38,18 @@ const CreateNoteForm: FC<CreateNoteFormProps> = ({
   return (
     <>
       <button
-        className={classes.closeBtn}
+        className={clsx(classes.closeBtn, !darkMode && 'light')}
         onClick={() => setIsNoteModalOpen(false)}
       >
         <IoMdClose />
       </button>
-      <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-        <h3 className={classes.formTitle}>Create a new note</h3>
+      <form
+        className={clsx(classes.form, !darkMode && 'light')}
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <h3 className={clsx(classes.formTitle, !darkMode && 'light')}>
+          Create a new note
+        </h3>
         <input
           {...register('title', { required: 'Enter the title, please' })}
           type='text'
@@ -59,7 +65,10 @@ const CreateNoteForm: FC<CreateNoteFormProps> = ({
           type='text'
           placeholder='Enter the image link(optional)...'
         />
-        <button type='submit' className={classes.formBtn}>
+        <button
+          type='submit'
+          className={clsx(classes.formBtn, !darkMode && 'light')}
+        >
           Create note
         </button>
       </form>

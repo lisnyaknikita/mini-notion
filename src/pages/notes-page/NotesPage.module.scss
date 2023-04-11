@@ -2,6 +2,7 @@
 
 .inner {
   margin-top: 35px;
+  flex: 1;
 }
 .title {
   font-size: 44px;
@@ -11,6 +12,9 @@
   @media (max-width: 740px) {
     margin-left: 30px;
     margin-bottom: 20px;
+  }
+  &:global(.light) {
+    color: $l-title;
   }
 }
 .addNewNote {
@@ -34,6 +38,14 @@
     margin-bottom: 15px;
     padding: 5px 10px;
   }
+  &:global(.light) {
+    color: darken($l-text, 5%);
+    background-color: $l-secondary;
+    &:hover {
+      background-color: darken($l-secondary, 2%);
+      color: $l-title;
+    }
+  }
 }
 .notesList {
   height: 715px;
@@ -41,6 +53,7 @@
   max-width: 1600px;
   @media (max-width: 1785px) {
     max-width: 1500px;
+    width: 100%;
     padding-right: 20px;
   }
   @media (max-width: 740px) {

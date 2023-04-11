@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useContext, useState } from 'react';
 
 import { FiSettings } from 'react-icons/fi';
 
@@ -8,8 +8,11 @@ import { useAppSelector } from '../../hooks/reduxHooks';
 import clsx from 'clsx';
 import ModalForm from '../../ui/modal-form/ModalForm';
 import SettingsModal from '../../ui/settings-modal/SettingsModal';
+import { ThemeContext } from '../../providers/ThemeContext';
 
 const Settings: FC = () => {
+  const { darkMode } = useContext(ThemeContext);
+
   const isNavOpen = useAppSelector((state) => state.navigation.isNavOpen);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -19,7 +22,7 @@ const Settings: FC = () => {
         <span>
           <IconContext.Provider
             value={{
-              color: 'white',
+              color: `${!darkMode ? '#2d2d34' : 'white'}`,
               className: 'global-class-name',
               size: '2em',
             }}
@@ -28,7 +31,7 @@ const Settings: FC = () => {
           </IconContext.Provider>
         </span>
         <span
-          className={classes.createText}
+          className={clsx(classes.createText, !darkMode && 'light')}
           onClick={() => {
             setIsModalOpen(true);
           }}

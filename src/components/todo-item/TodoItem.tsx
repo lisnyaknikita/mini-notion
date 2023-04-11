@@ -18,14 +18,13 @@ import {
 import classes from './TodoItem.module.scss';
 
 const TodoItem: FC<TodoItemProps> = ({ id }) => {
-  const { data, isLoading, isError } = useGetTodoByIdQuery(id);
+  const { data, isLoading, isError } = useGetTodoByIdQuery<any>(id);
   const [updateStatus, {}] = useUpdateStatusMutation();
 
   const [deleteTodo, {}] = useDeleteTodoMutation();
 
   const handleDoneStatus = () => {
-    //@ts-ignore
-    updateStatus({ ...data, status: !data?.status });
+    data && updateStatus({ ...data, status: !data?.status });
   };
 
   return (
@@ -58,7 +57,6 @@ const TodoItem: FC<TodoItemProps> = ({ id }) => {
       <p className={classes.todoDescr}>{data?.text}</p>
       <button
         className={classes.deleteBtn}
-        //@ts-ignore
         onClick={() => deleteTodo(data?.id)}
       >
         Delete

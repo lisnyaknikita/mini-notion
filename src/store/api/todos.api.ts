@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ITodo, ITodoData } from '../../types/todos';
 
-// Define a service using a base URL and expected endpoints
 export const todosApi = createApi({
   reducerPath: 'todosApi',
   tagTypes: ['Todo'],
@@ -63,8 +62,6 @@ export const todosApi = createApi({
   }),
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
 export const {
   useGetTodosQuery,
   useGetTodoByIdQuery,

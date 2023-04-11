@@ -9,9 +9,17 @@ import JournalingPage from './pages/journaling-page/JournalingPage';
 import './assets/styles/global.scss';
 import NotePage from './pages/note-page/NotePage';
 
+import { useContext } from 'react';
+
+import { ThemeContext } from './providers/ThemeContext';
+
+import clsx from 'clsx';
+
 function App() {
+  const { darkMode } = useContext(ThemeContext);
+
   return (
-    <div className='wrapper'>
+    <div className={clsx('wrapper', !darkMode && 'light')}>
       <div className='navigation'>
         <Navigation />
       </div>

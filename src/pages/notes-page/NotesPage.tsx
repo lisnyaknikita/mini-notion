@@ -1,5 +1,7 @@
-import { FC, useState } from 'react';
+import { FC, useContext, useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
+
+import classes from './NotesPage.module.scss';
 
 import { FiPlus } from 'react-icons/fi';
 
@@ -8,15 +10,17 @@ import Note from '../../components/note/Note';
 import Tooltip from '@mui/material/Tooltip';
 
 import ModalForm from '../../ui/modal-form/ModalForm';
-import CreateNoteForm from '../../ui/createNoteForm/CreateNoteForm';
+import CreateNoteForm from '../../ui/create-note-form/CreateNoteForm';
 
 import { useGetNotesQuery } from '../../store/api/notes.api';
 
 import { INote } from '../../types/notes';
-
-import classes from './NotesPage.module.scss';
+import { ThemeContext } from '../../providers/ThemeContext';
+import clsx from 'clsx';
 
 const NotesPage: FC = () => {
+  const { darkMode } = useContext(ThemeContext);
+
   const { data, isLoading, isError } = useGetNotesQuery(null);
   const [isNoteModalOpen, setIsNoteModalOpen] = useState(false);
 
@@ -24,17 +28,14 @@ const NotesPage: FC = () => {
     <div className={classes.inner}>
       {isNoteModalOpen && (
         <ModalForm>
-          <CreateNoteForm
-            isNoteModalOpen={isNoteModalOpen}
-            setIsNoteModalOpen={setIsNoteModalOpen}
-          />
+          <CreateNoteForm setIsNoteModalOpen={setIsNoteModalOpen} />
         </ModalForm>
       )}
-      <h2 className={classes.title}>Notes</h2>
+      <h2 className={clsx(classes.title, !darkMode && 'light')}>Notes</h2>
       <div className={classes.notes}>
         <Tooltip title='Add new note'>
           <button
-            className={classes.addNewNote}
+            className={clsx(classes.addNewNote, !darkMode && 'light')}
             onClick={() => setIsNoteModalOpen(true)}
           >
             <FiPlus />

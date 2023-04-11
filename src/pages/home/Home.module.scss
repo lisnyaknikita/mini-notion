@@ -12,6 +12,9 @@
   font-size: 60px;
   color: $title;
   line-height: 60px;
+  &:global(.light) {
+    color: $l-title;
+  }
   span {
     text-transform: uppercase;
   }

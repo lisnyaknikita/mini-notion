@@ -17,4 +17,10 @@
   svg {
     margin-top: 5px;
   }
+  &:global(.light) {
+    background-color: $l-title;
+    &:hover {
+      background-color: $l-text;
+    }
+  }
 }

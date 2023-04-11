@@ -15,6 +15,9 @@
   @media (max-width: 600px) {
     width: 180px;
   }
+  &:global(.light) {
+    background-color: $l-title;
+  }
 }
 .color {
   width: 20px;

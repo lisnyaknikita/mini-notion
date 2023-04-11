@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 
 import { RiUser3Line } from 'react-icons/ri';
 import { VscEdit } from 'react-icons/vsc';
@@ -14,8 +14,11 @@ import EnterNameForm from '../../ui/enter-name-form/EnterNameForm';
 import Tooltip from '@mui/material/Tooltip';
 
 import classes from './UserInfo.module.scss';
+import { ThemeContext } from '../../providers/ThemeContext';
 
 const UserInfo: FC = () => {
+  const { darkMode } = useContext(ThemeContext);
+
   const isNavOpen = useAppSelector((state) => state.navigation.isNavOpen);
 
   const [name, setName] = useState<string>(
@@ -39,10 +42,16 @@ const UserInfo: FC = () => {
           />
         </ModalForm>
       )}
-      <div className={clsx(classes.userInfo, isNavOpen && 'opened')}>
+      <div
+        className={clsx(
+          classes.userInfo,
+          isNavOpen && 'opened',
+          !darkMode && 'light'
+        )}
+      >
         <IconContext.Provider
           value={{
-            color: 'white',
+            color: `${!darkMode ? '#2d2d34' : 'white'}`,
             className: 'global-class-name',
             size: '2em',
           }}

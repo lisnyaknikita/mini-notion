@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 
 import { MdOutlineKeyboardDoubleArrowLeft } from 'react-icons/md';
 
@@ -14,8 +14,11 @@ import { toggleNavOpen } from '../../store/slices/navigationSlice';
 import Tooltip from '@mui/material/Tooltip';
 
 import classes from './Navigation.module.scss';
+import { ThemeContext } from '../../providers/ThemeContext';
 
 const Navigation: FC = () => {
+  const { darkMode } = useContext(ThemeContext);
+
   const dispatch = useAppDispatch();
   const isNavOpen = useAppSelector((state) => state.navigation.isNavOpen);
 
@@ -24,12 +27,17 @@ const Navigation: FC = () => {
       className={clsx(
         classes.navigation,
         isNavOpen && 'opened',
-        !isNavOpen && ''
+        !isNavOpen && '',
+        !darkMode && 'light'
       )}
     >
       <Tooltip title='Show/Hide'>
         <button
-          className={clsx(classes.showHideBtn, isNavOpen && 'opened')}
+          className={clsx(
+            classes.showHideBtn,
+            isNavOpen && 'opened',
+            !darkMode && 'light'
+          )}
           onClick={() => dispatch(toggleNavOpen())}
         >
           <MdOutlineKeyboardDoubleArrowLeft />

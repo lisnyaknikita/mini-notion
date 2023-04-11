@@ -29,6 +29,14 @@
       font-size: 26px;
     }
   }
+  &:global(.light) {
+    a {
+      color: $l-text;
+    }
+    &:hover {
+      background-color: $l-secondary;
+    }
+  }
 }
 
 .badge {
