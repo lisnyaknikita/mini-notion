@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useContext, useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 
 import { FiPlus } from 'react-icons/fi';
@@ -13,22 +13,28 @@ import Tooltip from '@mui/material/Tooltip';
 
 import classes from './TodosPage.module.scss';
 
+import { ThemeContext } from '../../providers/ThemeContext';
+
+import clsx from 'clsx';
+
 const TodosPage: FC = () => {
+  const { darkMode } = useContext(ThemeContext);
+
   const { data, isLoading, isError } = useGetTodosQuery(null);
 
   const [isTodosModalOpen, setIsTodosModalOpen] = useState(false);
 
   return (
     <div className={classes.inner}>
-      <h2 className={classes.title}>To-do list</h2>
+      <h2 className={clsx(classes.title, !darkMode && 'light')}>To-do list</h2>
       <div className={classes.todos}>
-        <p className={classes.number}>
+        <p className={clsx(classes.number, !darkMode && 'light')}>
           You've got <span>{data?.length}</span> tasks coming up in the next
           days.
         </p>
         <Tooltip title='Add new task'>
           <button
-            className={classes.addNewTask}
+            className={clsx(classes.addNewTask, !darkMode && 'light')}
             onClick={() => setIsTodosModalOpen(true)}
           >
             <FiPlus />
@@ -37,10 +43,7 @@ const TodosPage: FC = () => {
         </Tooltip>
         {isTodosModalOpen && (
           <ModalForm>
-            <CreateTodoForm
-              isTodosModalOpen={isTodosModalOpen}
-              setIsTodosModalOpen={setIsTodosModalOpen}
-            />
+            <CreateTodoForm setIsTodosModalOpen={setIsTodosModalOpen} />
           </ModalForm>
         )}
         <ul className={classes.todosList}>

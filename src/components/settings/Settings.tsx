@@ -1,13 +1,17 @@
 import { FC, useContext, useState } from 'react';
 
+import { IconContext } from 'react-icons';
 import { FiSettings } from 'react-icons/fi';
 
 import classes from './Settings.module.scss';
-import { IconContext } from 'react-icons';
+
 import { useAppSelector } from '../../hooks/reduxHooks';
+
 import clsx from 'clsx';
+
 import ModalForm from '../../ui/modal-form/ModalForm';
 import SettingsModal from '../../ui/settings-modal/SettingsModal';
+
 import { ThemeContext } from '../../providers/ThemeContext';
 
 const Settings: FC = () => {
@@ -18,7 +22,13 @@ const Settings: FC = () => {
 
   return (
     <>
-      <button className={clsx(classes.settings, isNavOpen && 'opened')}>
+      <button
+        className={clsx(
+          classes.settings,
+          isNavOpen && 'opened',
+          !darkMode && 'light'
+        )}
+      >
         <span>
           <IconContext.Provider
             value={{

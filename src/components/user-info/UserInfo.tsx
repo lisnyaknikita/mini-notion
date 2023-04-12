@@ -14,6 +14,7 @@ import EnterNameForm from '../../ui/enter-name-form/EnterNameForm';
 import Tooltip from '@mui/material/Tooltip';
 
 import classes from './UserInfo.module.scss';
+
 import { ThemeContext } from '../../providers/ThemeContext';
 
 const UserInfo: FC = () => {
@@ -22,7 +23,7 @@ const UserInfo: FC = () => {
   const isNavOpen = useAppSelector((state) => state.navigation.isNavOpen);
 
   const [name, setName] = useState<string>(
-    String(localStorage.getItem('name'))
+    localStorage.getItem('name') || ''
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -37,7 +38,7 @@ const UserInfo: FC = () => {
         <ModalForm>
           <EnterNameForm
             setIsModalOpen={setIsModalOpen}
-            name={name}
+            name={name || ''}
             setName={setName}
           />
         </ModalForm>

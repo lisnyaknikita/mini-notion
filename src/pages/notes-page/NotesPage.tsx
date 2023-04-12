@@ -15,7 +15,9 @@ import CreateNoteForm from '../../ui/create-note-form/CreateNoteForm';
 import { useGetNotesQuery } from '../../store/api/notes.api';
 
 import { INote } from '../../types/notes';
+
 import { ThemeContext } from '../../providers/ThemeContext';
+
 import clsx from 'clsx';
 
 const NotesPage: FC = () => {
@@ -44,6 +46,7 @@ const NotesPage: FC = () => {
         </Tooltip>
 
         <ul className={classes.notesList}>
+          {data?.length === 0 && <h2 style={{fontSize: 32, textAlign: "center", color: `${darkMode ? '#feffff' : '#000'}`}}>You don’t have any notes</h2>}
           {isError && <h2 style={{ color: 'red' }}>Error!</h2>}
           {isLoading && (
             <ThreeDots

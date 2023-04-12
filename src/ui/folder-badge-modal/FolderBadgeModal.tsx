@@ -4,7 +4,9 @@ import { FolderBageModalProps } from './FolderBadgeModal.types';
 import { useAppSelector } from '../../hooks/reduxHooks';
 
 import classes from './FolderBadgeModal.module.scss';
+
 import { ThemeContext } from '../../providers/ThemeContext';
+
 import clsx from 'clsx';
 
 const FolderBadgeModal: FC<FolderBageModalProps> = ({ handleChangeColor }) => {

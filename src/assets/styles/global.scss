@@ -22,7 +22,7 @@ a {
   width: 100vw;
   height: 100vh;
   &.light {
-    background-color: #f6f1d1;
+    background-color: $l-primary;
   }
 }
 .navigation {
@@ -45,20 +45,21 @@ a {
   }
 }
 .ql-picker-options {
-  background-color: $secondary !important;
+  background-color: $l-secondary !important;
   border: none !important;
 }
 .ql-toolbar {
   border: 0 !important;
   font-family: 'Roboto', sans-serif !important;
   span {
-    color: $title !important;
+    color: $l-text !important;
   }
   @media (max-width: 500px) {
     margin-bottom: 20px;
   }
 }
 .ql-editor {
+  color: #b6b6b6;
   img {
     max-width: 300px;
     max-height: 300px;

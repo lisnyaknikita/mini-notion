@@ -12,6 +12,9 @@
     margin-left: 30px;
     margin-bottom: 20px;
   }
+  &:global(.light) {
+    color: $l-title;
+  }
 }
 .number {
   font-size: 28px;
@@ -24,6 +27,9 @@
     margin-left: 30px;
     font-size: 24px;
     margin-bottom: 20px;
+  }
+  &:global(.light) {
+    color: $l-text;
   }
 }
 .addNewTask {
@@ -46,6 +52,14 @@
     margin-left: 30px;
     margin-bottom: 15px;
     padding: 5px 10px;
+  }
+  &:global(.light) {
+    color: darken($l-text, 5%);
+    background-color: $l-secondary;
+    &:hover {
+      background-color: darken($l-secondary, 2%);
+      color: $l-title;
+    }
   }
 }
 .todosList {

@@ -8,7 +8,9 @@ import Tooltip from '@mui/material/Tooltip';
 import FolderBadgeModal from '../../../ui/folder-badge-modal/FolderBadgeModal';
 
 import classes from './FolderNotes.module.scss';
+
 import clsx from 'clsx';
+
 import { ThemeContext } from '../../../providers/ThemeContext';
 
 const FolderNotes: FC = () => {

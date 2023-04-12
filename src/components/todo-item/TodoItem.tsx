@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 
 import FormGroup from '@mui/material/FormGroup';
@@ -17,7 +17,11 @@ import {
 
 import classes from './TodoItem.module.scss';
 
+import { ThemeContext } from '../../providers/ThemeContext';
+
 const TodoItem: FC<TodoItemProps> = ({ id }) => {
+  const { darkMode } = useContext(ThemeContext);
+
   const { data, isLoading, isError } = useGetTodoByIdQuery<any>(id);
   const [updateStatus, {}] = useUpdateStatusMutation();
 
@@ -28,7 +32,13 @@ const TodoItem: FC<TodoItemProps> = ({ id }) => {
   };
 
   return (
-    <li className={clsx(classes.todoItem, data?.status === true && 'done')}>
+    <li
+      className={clsx(
+        classes.todoItem,
+        data?.status === true && 'done',
+        !darkMode && 'light'
+      )}
+    >
       {isError && <h1 style={{ color: 'red' }}>Error!</h1>}
       {isLoading && (
         <ThreeDots
@@ -54,9 +64,11 @@ const TodoItem: FC<TodoItemProps> = ({ id }) => {
           label={data?.title}
         />
       </FormGroup>
-      <p className={classes.todoDescr}>{data?.text}</p>
+      <p className={clsx(classes.todoDescr, !darkMode && 'light')}>
+        {data?.text}
+      </p>
       <button
-        className={classes.deleteBtn}
+        className={clsx(classes.deleteBtn, !darkMode && 'light')}
         onClick={() => deleteTodo(data?.id)}
       >
         Delete

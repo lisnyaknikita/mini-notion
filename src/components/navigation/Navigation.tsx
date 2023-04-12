@@ -14,6 +14,7 @@ import { toggleNavOpen } from '../../store/slices/navigationSlice';
 import Tooltip from '@mui/material/Tooltip';
 
 import classes from './Navigation.module.scss';
+
 import { ThemeContext } from '../../providers/ThemeContext';
 
 const Navigation: FC = () => {

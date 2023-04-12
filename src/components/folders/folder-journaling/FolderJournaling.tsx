@@ -9,7 +9,9 @@ import { FaFolder } from 'react-icons/fa';
 import FolderBadgeModal from '../../../ui/folder-badge-modal/FolderBadgeModal';
 
 import classes from './FolderJournaling.module.scss';
+
 import clsx from 'clsx';
+
 import { ThemeContext } from '../../../providers/ThemeContext';
 
 const FolderJournaling: FC = () => {

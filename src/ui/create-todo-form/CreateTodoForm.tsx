@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { IoMdClose } from 'react-icons/io';
@@ -10,7 +10,13 @@ import { useCreateTodoMutation } from '../../store/api/todos.api';
 
 import classes from './CreateTodoForm.module.scss';
 
+import { ThemeContext } from '../../providers/ThemeContext';
+
+import clsx from 'clsx';
+
 const CreateTodoForm: FC<CreateTodoFormProps> = ({ setIsTodosModalOpen }) => {
+  const { darkMode } = useContext(ThemeContext);
+
   const [createTodo, {}] = useCreateTodoMutation();
 
   const {
@@ -33,13 +39,18 @@ const CreateTodoForm: FC<CreateTodoFormProps> = ({ setIsTodosModalOpen }) => {
   return (
     <>
       <button
-        className={classes.closeBtn}
+        className={clsx(classes.closeBtn, !darkMode && 'light')}
         onClick={() => setIsTodosModalOpen(false)}
       >
         <IoMdClose />
       </button>
-      <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-        <h3 className={classes.formTitle}>Create a new task</h3>
+      <form
+        className={clsx(classes.form, !darkMode && 'light')}
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <h3 className={clsx(classes.formTitle, !darkMode && 'light')}>
+          Create a new task
+        </h3>
         <input
           {...register('title', { required: 'Enter the title, please' })}
           type='text'
@@ -55,7 +66,10 @@ const CreateTodoForm: FC<CreateTodoFormProps> = ({ setIsTodosModalOpen }) => {
           type='text'
           placeholder='Enter the description...'
         />
-        <button type='submit' className={classes.formBtn}>
+        <button
+          type='submit'
+          className={clsx(classes.formBtn, !darkMode && 'light')}
+        >
           Create task
         </button>
       </form>

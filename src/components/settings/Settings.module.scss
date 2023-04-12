@@ -20,16 +20,18 @@
     transform: translateX(0);
     &:hover {
       .createText {
-        color: $l-title;
+        color: $title;
       }
-      background-color: $l-secondary;
+      background-color: $l-text;
     }
-  }
-  &:hover {
-    .createText {
-      color: $title;
+    &:global(.light) {
+      &:hover {
+        .createText {
+          color: $l-text;
+        }
+        background-color: #bdbdbd;
+      }
     }
-    background-color: darken(#fff, 75%);
   }
 }
 .createText {

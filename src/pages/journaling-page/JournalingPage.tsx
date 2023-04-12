@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useContext, useState } from 'react';
 import ReactQuill from 'react-quill';
 
 import { useAppSelector } from '../../hooks/reduxHooks';
@@ -9,7 +9,11 @@ import { modules } from '../note-page/Editor.modules';
 
 import classes from './JournalingPage.module.scss';
 
+import { ThemeContext } from '../../providers/ThemeContext';
+
 const JournalingPage: FC = () => {
+  const { darkMode } = useContext(ThemeContext);
+
   const isNavOpen = useAppSelector((state) => state.navigation.isNavOpen);
 
   const [value, setValue] = useState(
@@ -24,7 +28,7 @@ const JournalingPage: FC = () => {
           alt='note background'
         />
       </div>
-      <h2 className={classes.title}>Journaling</h2>
+      <h2 className={clsx(classes.title, !darkMode && 'light')}>Journaling</h2>
       <div className={clsx(classes.journaling, !isNavOpen && 'full')}>
         <div className={classes.journalingEditor}>
           <ReactQuill

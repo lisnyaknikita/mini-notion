@@ -18,9 +18,14 @@
     margin-top: 5px;
   }
   &:global(.light) {
-    background-color: $l-title;
+    background-color: $l-text;
     &:hover {
-      background-color: $l-text;
+      background-color: darken($l-text, 8%);
     }
+  }
+}
+.toggleTheme {
+  label {
+    cursor: default;
   }
 }

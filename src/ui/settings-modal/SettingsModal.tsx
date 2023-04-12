@@ -1,15 +1,20 @@
 import { FC, useContext } from 'react';
 
 import classes from './SettingsModal.module.scss';
+
 import FormGroup from '@mui/material/FormGroup';
 import { FormControlLabel, Switch } from '@mui/material';
+
 import { SettingsModalProps } from './SettingsModal.types';
+
 import { IoMdClose } from 'react-icons/io';
+
 import clsx from 'clsx';
+
 import { ThemeContext } from '../../providers/ThemeContext';
 
 const SettingsModal: FC<SettingsModalProps> = ({ setIsModalOpen }) => {
-  const { darkMode } = useContext(ThemeContext);
+  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
 
   return (
     <>
@@ -19,13 +24,16 @@ const SettingsModal: FC<SettingsModalProps> = ({ setIsModalOpen }) => {
       >
         <IoMdClose />
       </button>
-      <FormGroup>
-        <FormControlLabel
-          control={<Switch />}
-          label='Dark mode'
-          style={{ color: `${'#2d2d34'}` }}
-        />
-      </FormGroup>
+      <div className={classes.toggleTheme}>
+        <FormGroup>
+          <FormControlLabel
+            control={<Switch />}
+            label='Dark theme'
+            style={{ color: `${!darkMode ? '#2d2d34' : '#feffff'}` }}
+            onClick={toggleDarkMode}
+          />
+        </FormGroup>
+      </div>
     </>
   );
 };

@@ -9,7 +9,9 @@ import { IconContext } from 'react-icons';
 import FolderBadgeModal from '../../../ui/folder-badge-modal/FolderBadgeModal';
 
 import classes from './FolderTodos.module.scss';
+
 import { ThemeContext } from '../../../providers/ThemeContext';
+
 import clsx from 'clsx';
 
 const FolderTodos: FC = () => {

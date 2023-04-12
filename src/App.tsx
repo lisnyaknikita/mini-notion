@@ -5,9 +5,9 @@ import Navigation from './components/navigation/Navigation';
 import NotesPage from './pages/notes-page/NotesPage';
 import TodosPage from './pages/todos-page/TodosPage';
 import JournalingPage from './pages/journaling-page/JournalingPage';
+import NotePage from './pages/note-page/NotePage';
 
 import './assets/styles/global.scss';
-import NotePage from './pages/note-page/NotePage';
 
 import { useContext } from 'react';
 

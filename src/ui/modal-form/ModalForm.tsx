@@ -1,7 +1,9 @@
 import { FC, PropsWithChildren, useContext } from 'react';
 
 import classes from './ModalForm.module.scss';
+
 import { ThemeContext } from '../../providers/ThemeContext';
+
 import clsx from 'clsx';
 
 const ModalForm: FC<PropsWithChildren> = ({ children }) => {

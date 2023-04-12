@@ -14,6 +14,7 @@ import { NoteProps } from './Note.types';
 import { useAppSelector } from '../../hooks/reduxHooks';
 
 import clsx from 'clsx';
+
 import { ThemeContext } from '../../providers/ThemeContext';
 
 const Note: FC<NoteProps> = ({ id }) => {

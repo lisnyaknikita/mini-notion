@@ -1,9 +1,12 @@
-import { FC, useContext, useEffect, useState } from 'react';
+import { FC, useContext, useEffect } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 import classes from './EnterNameForm.module.scss';
+
 import { EnterNameFormProps, Inputs } from './EnterNameForm.types';
-import { SubmitHandler, useForm } from 'react-hook-form';
+
 import { ThemeContext } from '../../providers/ThemeContext';
+
 import clsx from 'clsx';
 
 const EnterNameForm: FC<EnterNameFormProps> = ({

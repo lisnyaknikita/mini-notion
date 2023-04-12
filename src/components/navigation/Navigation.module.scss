@@ -10,6 +10,8 @@
   display: flex;
   flex-direction: column;
   transition: all 0.3s;
+  position: relative;
+  z-index: 20;
   &:global(.opened) {
     width: 300px;
     @media (max-width: 900px) {

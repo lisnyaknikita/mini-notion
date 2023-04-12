@@ -5,11 +5,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  &:global(.light) {
+    input {
+      background-color: $l-primary;
+      color: $l-text;
+    }
+  }
 }
 .formTitle {
   font-size: 36px;
   margin-bottom: 35px;
   color: $title;
+  &:global(.light) {
+    color: $l-title;
+  }
 }
 input {
   background-color: $primary;
@@ -43,13 +52,19 @@ input {
   @media (max-width: 630px) {
     width: 150px !important;
   }
+  &:global(.light) {
+    background-color: $l-text;
+    &:hover {
+      background-color: darken($l-text, 8%);
+    }
+  }
 }
 .closeBtn {
   position: absolute;
   top: 10px;
   right: 10px;
   font-size: 22px;
-  padding: 6px 10px;
+  padding: 5px 10px;
   background-color: $primary;
   border-radius: 50%;
   cursor: pointer;
@@ -62,5 +77,11 @@ input {
   }
   @media (max-width: 630px) {
     width: 44px !important;
+  }
+  &:global(.light) {
+    background-color: $l-text;
+    &:hover {
+      background-color: darken($l-text, 8%);
+    }
   }
 }

@@ -41,6 +41,15 @@
     opacity: 0.2;
     text-decoration: line-through;
   }
+  &:global(.light) {
+    background-color: $l-secondary;
+    &:hover {
+      background-color: darken($l-secondary, 2%);
+    }
+    label span {
+      color: $l-title;
+    }
+  }
 }
 .todoDescr {
   padding-left: 32px;
@@ -50,6 +59,9 @@
   display: -webkit-box; /* Включаем флексбоксы */
   -webkit-box-orient: vertical; /* Вертикальная ориентация */
   overflow: hidden;
+  &:global(.light) {
+    color: $l-text;
+  }
 }
 .deleteBtn {
   position: absolute;

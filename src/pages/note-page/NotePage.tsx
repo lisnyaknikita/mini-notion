@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useContext, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { modules } from './Editor.modules';
@@ -20,7 +20,13 @@ import Tooltip from '@mui/material/Tooltip';
 
 import classes from './NotePage.module.scss';
 
+import clsx from 'clsx';
+
+import { ThemeContext } from '../../providers/ThemeContext';
+
 const NotePage: FC = () => {
+  const { darkMode } = useContext(ThemeContext);
+
   const params = useParams();
   //@ts-ignore
   const { data, isError } = useGetNoteByIdQuery<any>(params?.id);
@@ -62,13 +68,13 @@ const NotePage: FC = () => {
       {isModalOpen && (
         <ModalForm>
           <button
-            className={classes.closeBtn}
+            className={clsx(classes.closeBtn, !darkMode && 'light')}
             onClick={() => setIsModalOpen(false)}
           >
             <IoMdClose />
           </button>
           <form
-            className={classes.updateTitleModal}
+            className={clsx(classes.updateTitleModal, !darkMode && 'light')}
             style={{
               display: 'flex',
               justifyContent: 'center',
@@ -86,11 +92,11 @@ const NotePage: FC = () => {
           </form>
         </ModalForm>
       )}
-      <div className={classes.noteTitle}>
+      <div className={clsx(classes.noteTitle, !darkMode && 'light')}>
         <h2>{isTitleLoading ? <h3>Loading...</h3> : data?.title}</h2>
         <Tooltip title='Edit title'>
           <button
-            className={classes.editTitleBtn}
+            className={clsx(classes.editTitleBtn, !darkMode && 'light')}
             onClick={() => setIsModalOpen(true)}
           >
             <BsPencil />
@@ -107,7 +113,7 @@ const NotePage: FC = () => {
       </div>
       <Tooltip title='Update the note text'>
         <button
-          className={classes.updateBtn}
+          className={clsx(classes.updateBtn, !darkMode && 'light')}
           onClick={() => updateNoteText({ ...data, text: value })}
         >
           Update

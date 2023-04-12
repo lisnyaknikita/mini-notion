@@ -9,7 +9,9 @@ import { useCreateNoteMutation } from '../../store/api/notes.api';
 import { IoMdClose } from 'react-icons/io';
 
 import classes from './CreateNoteForm.module.scss';
+
 import { ThemeContext } from '../../providers/ThemeContext';
+
 import clsx from 'clsx';
 
 const CreateNoteForm: FC<CreateNoteFormProps> = ({ setIsNoteModalOpen }) => {
