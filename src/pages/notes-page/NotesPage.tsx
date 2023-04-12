@@ -46,7 +46,17 @@ const NotesPage: FC = () => {
         </Tooltip>
 
         <ul className={classes.notesList}>
-          {data?.length === 0 && <h2 style={{fontSize: 32, textAlign: "center", color: `${darkMode ? '#feffff' : '#000'}`}}>You don’t have any notes</h2>}
+          {data?.length === 0 && (
+            <h2
+              style={{
+                fontSize: 32,
+                textAlign: 'center',
+                color: `${darkMode ? '#feffff' : '#000'}`,
+              }}
+            >
+              You don’t have any notes
+            </h2>
+          )}
           {isError && <h2 style={{ color: 'red' }}>Error!</h2>}
           {isLoading && (
             <ThreeDots

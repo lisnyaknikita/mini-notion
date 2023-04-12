@@ -6,7 +6,7 @@ type ThemeProviderProps = {
 };
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   function toggleDarkMode() {
     setDarkMode((prevMode) => !prevMode);
