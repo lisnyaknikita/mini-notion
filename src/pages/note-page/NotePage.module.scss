@@ -140,6 +140,9 @@
   svg {
     margin-top: 5px;
   }
+  @media (max-width: 630px) {
+    width: 44px !important;
+  }
   &:global(.light) {
     background-color: $l-text;
     &:hover {
