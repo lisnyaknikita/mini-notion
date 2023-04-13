@@ -1,7 +1,5 @@
 # miNotion
 
-### This is miNotion app. In this app you can create, edit and delete notes, create To-do list and journaling.
-
 ##### Technologies:
 
 - React, TS;
