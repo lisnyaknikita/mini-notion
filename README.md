@@ -1,17 +1,19 @@
-Welcome!
+# miNotion
 
-This is miniNotion app. In this app you can create, edit and delete notes, create To-do list and journaling.
+### This is miNotion app. In this app you can create, edit and delete notes, create To-do list and journaling.
 
-Technologies:
+##### Technologies:
 
--React, TS;
+- React, TS;
+- Redux Toolkit, RTK Query;
+- React Hook Form;
+- react-router-dom;
+- React quill(editor for notes and journaling);
 
--Redux Toolkit, RTK Query;
+##### Capabilities:
 
--React Hook Form;
+- Creating your own notes, deleting and editing them;
+- Creating a task list, checking them off as completed, deleting tasks;
+-  In the Journaling folder, you can vent without fear of it being saved, as everything written will be cleared upon exiting the folder
 
--react-router-dom;
-
--React quill(editor for notes and journaling);
-
--Vite
+### This application works on both phones and tablets as well as larger monitors.
