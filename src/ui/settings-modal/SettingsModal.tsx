@@ -28,6 +28,7 @@ const SettingsModal: FC<SettingsModalProps> = ({ setIsModalOpen }) => {
         <FormGroup>
           <FormControlLabel
             control={<Switch />}
+            checked={darkMode}
             label='Dark theme'
             style={{ color: `${!darkMode ? '#2d2d34' : '#feffff'}` }}
             onClick={toggleDarkMode}

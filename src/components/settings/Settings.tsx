@@ -28,6 +28,9 @@ const Settings: FC = () => {
           isNavOpen && 'opened',
           !darkMode && 'light'
         )}
+        onClick={() => {
+            setIsModalOpen(true);
+        }}
       >
         <span>
           <IconContext.Provider
@@ -42,9 +45,7 @@ const Settings: FC = () => {
         </span>
         <span
           className={clsx(classes.createText, !darkMode && 'light')}
-          onClick={() => {
-            setIsModalOpen(true);
-          }}
+
         >
           Settings
         </span>

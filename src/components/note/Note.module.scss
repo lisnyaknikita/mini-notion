@@ -55,11 +55,13 @@
   line-height: 31px;
   text-align: center;
   color: $title;
-  margin-bottom: 15px;
-  max-width: 1360px;
   -webkit-line-clamp: 3; /* Число отображаемых строк */
   display: -webkit-box; /* Включаем флексбоксы */
   -webkit-box-orient: vertical; /* Вертикальная ориентация */
+  width: 70%;
+  max-height: 100px;
+  word-wrap: break-word;
+  margin: 0 auto 15px auto;
   overflow: hidden;
   @media (max-width: 1400px) {
     font-size: 26px;
@@ -76,6 +78,7 @@
   @media (max-width: 400px) {
     font-size: 20px;
     line-height: 23px;
+    padding-right: 35px;
   }
   &:global(.light) {
     color: $l-title;

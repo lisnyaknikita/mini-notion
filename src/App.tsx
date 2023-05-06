@@ -9,7 +9,7 @@ import NotePage from './pages/note-page/NotePage';
 
 import './assets/styles/global.scss';
 
-import { useContext } from 'react';
+import {useContext, useEffect} from 'react';
 
 import { ThemeContext } from './providers/ThemeContext';
 
