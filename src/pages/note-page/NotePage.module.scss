@@ -49,6 +49,12 @@
       width: 0px;
       height: 0px;
     }
+    @media (max-width: 768px) {
+      max-height: 200px;
+    }
+    @media (max-width: 480px) {
+      max-height: 100px;
+    }
   }
   display: inline-flex;
   gap: 25px;
