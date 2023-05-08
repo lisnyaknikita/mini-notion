@@ -5,8 +5,12 @@
 body {
   font-family: 'Roboto', sans-serif;
   color: $text;
-  background-color: $primary;
+  //background-color: $primary;
+  background-color: $l-primary;
   overflow-x: hidden;
+}
+body.dark{
+  background-color: $primary;
 }
 button {
   font-family: 'Roboto', sans-serif;
@@ -20,7 +24,7 @@ a {
 .wrapper {
   display: flex;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   &.light {
     background-color: $l-primary;
@@ -31,6 +35,8 @@ a {
   align-items: center;
   padding-left: 30px;
   padding-right: 30px;
+  //padding-top: 93px;
+  height: 940px;
   @media (max-width: 900px) {
     padding-left: 10px;
     padding-right: 10px;
@@ -41,8 +47,12 @@ a {
   display: flex;
 }
 .quill {
-  max-height: 450px !important;
-  overflow-y: auto !important;
+  //max-height: 450px !important;
+  //overflow-y: auto !important;
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
   @media (max-width: 1800px) {
     margin-left: 30px;
   }
@@ -68,6 +78,26 @@ a {
     max-height: 300px;
     object-fit: cover;
   }
+  max-height: 400px !important;
+  overflow-y: auto !important;
+  /* Для WebKit */
+  ::-webkit-scrollbar {
+    width: 10px; /* ширина скроллбара */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: red; /* цвет полосы прокрутки */
+  }
+
+  /* Для Firefox */
+  scrollbar {
+    width: 10px; /* ширина скроллбара */
+  }
+
+  scrollbar-thumb {
+    background-color: red; /* цвет полосы прокрутки */
+  }
+
 }
 .ql-container {
   border: none !important;
